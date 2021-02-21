@@ -1,0 +1,19 @@
+{
+  "name": "tymecore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trukes/tyme_core.git"
+  },
+  "author": "Pedro Carmo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Trukes/tyme_core/issues"
+  },
+  "homepage": "https://github.com/Trukes/tyme_core#readme"
+}

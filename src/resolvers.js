@@ -1,4 +1,4 @@
-import { Cat } from './models/Cat'
+import { Cat } from "./models/Cat";
 
 export const resolvers = {
     Query: {
@@ -14,4 +14,4 @@ export const resolvers = {
 
         }
     }
-}
+};

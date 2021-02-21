@@ -4,8 +4,9 @@ import { Schema } from "mongoose";
 const userSchema = new Schema(
     { 
         name: String,
-        email: String, 
-        
+        email: String,       
+        password: String,
+        status: { type: Boolean, default: true }
     }
 );
 

@@ -14,4 +14,4 @@ export const typeDefs = gql`
     type Mutation {
         createCat(name: String!): Cat!
     }
-`
+`;

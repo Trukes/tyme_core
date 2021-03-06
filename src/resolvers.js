@@ -1,5 +1,5 @@
 import { Cat } from "./models/Cat";
-import { User } from "./models/User";
+import { User } from "./models";
 
 export const resolvers = {
     Query: {

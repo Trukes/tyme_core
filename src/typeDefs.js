@@ -5,6 +5,7 @@ export const typeDefs = gql`
         hello: String!
         cats: [Cat!]!
         users: [User!]!
+        findUser(id: String!): User!
     }
 
     type Cat {

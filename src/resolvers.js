@@ -1,17 +1,28 @@
-import { Cat } from "./models/Cat";
+import { userController } from "./controllers";
 
 export const resolvers = {
     Query: {
         hello: () => "hello",
-        cats: () => Cat.find()
+        users: () => userController.allUsers(),
+        findUser: (_, args) => userController.getUser(args),
+        loginUser: (_, args) => userController.logInUser(args)
+        // findUser: ({id}) => {
+        //     console.log(id);
+        //     return userController.getUser({id});
+        // }
     },
     Mutation: {
-        createCat: async (_, {name}) => {
-            const kitty = new Cat({ name });
-            // kitty.save().then(() => console.log('meow'));
-            await kitty.save();
-            return kitty;
-
-        }
+        registerUser: async (_, { name, email, password }) => {
+            let resUser =  await userController.createUser({name, email, password});
+            return resUser;
+        },  
+        updateUser: async (_, args) => { 
+            let resUser = await userController.updateUser(args.id, args);
+            return resUser;
+        },      
+        deleteUser: async (_, args) => {
+            let resUser = await userController.deleteUser(args.id);
+            return resUser;
+        }      
     }
 };

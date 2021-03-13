@@ -5,6 +5,7 @@ import mongoose  from "mongoose";
 import { resolvers } from "./resolvers";
 import { typeDefs } from "./typeDefs";
 
+require('dotenv').config()
 
 const startServer = async () => {
     const app = express();
@@ -23,7 +24,7 @@ const startServer = async () => {
     });
 
     // // http://teldrassil.pedrocarmo.pt:9093/ EXPRESS
-    await mongoose.connect("mongodb://teldrassil.pedrocarmo.pt:9092/tyme_core", {useNewUrlParser: true});
+    await mongoose.connect(`${process.env.MONGO_URL}/tyme_core`, {useNewUrlParser: true, useUnifiedTopology:true, useCreateIndex: true });
 
 
     app.listen({ port: 4000 }, () =>

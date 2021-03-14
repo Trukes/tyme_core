@@ -2,10 +2,12 @@ import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
   type Query {
-    hello: String!
     users: [User!]!
     findUser(id: String!): User!
     loginUser(email: String!, password: String!): Authentication!
+
+    projects: [Project!]!
+    findProject(id: String!): Project!
   }
 
   type Mutation {

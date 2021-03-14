@@ -2,14 +2,14 @@ import { userController, projectController } from "./controllers";
 
 export const resolvers = {
   Query: {
-    hello: () => "hello",
+    // users
     users: () => userController.allUsers(),
     findUser: (_, args) => userController.getUser(args),
     loginUser: (_, args) => userController.logInUser(args),
-    // findUser: ({id}) => {
-    //     console.log(id);
-    //     return userController.getUser({id});
-    // }
+
+    // projects
+    projects: () => projectController.allProjects(),
+    findProject: (_, args) => projectController.findProject(args),
   },
   Mutation: {
     registerUser: async (_, { name, email, password }) => {
@@ -26,7 +26,6 @@ export const resolvers = {
     },
 
     createProject: async (_, args) => {
-      console.log("entrei aqui");
       let resProject = await projectController.createProject(args);
       return resProject;
     },

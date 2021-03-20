@@ -1,4 +1,8 @@
-import { userController, projectController } from "./controllers";
+import {
+  userController,
+  projectController,
+  taskController,
+} from "./controllers";
 
 export const resolvers = {
   Query: {
@@ -10,6 +14,9 @@ export const resolvers = {
     // projects
     projects: () => projectController.allProjects(),
     findProject: (_, args) => projectController.findProject(args),
+
+    // tasks
+    tasks: () => taskController.allTasks(),
   },
   Mutation: {
     registerUser: async (_, { name, email, password }) => {
@@ -25,9 +32,16 @@ export const resolvers = {
       return resUser;
     },
 
+    // projects
     createProject: async (_, args) => {
       let resProject = await projectController.createProject(args);
       return resProject;
+    },
+
+    // tasks
+    createTask: async (_, args) => {
+      let resTask = await taskController.createTask(args);
+      return resTask;
     },
   },
 };

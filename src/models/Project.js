@@ -8,7 +8,12 @@ const projectSchema = new Schema(
       required: [true, "Name is required"],
     },
     description: String,
-    tasks: Array,
+    tasks: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Task",
+      },
+    ],
     status: { type: Boolean, default: true },
   },
   {

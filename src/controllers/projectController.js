@@ -1,40 +1,31 @@
-import { Project } from "../models";
+import { ProjectFactory } from "../factory";
 
 exports.createProject = async (args) => {
-  const project = new Project(args);
-  await project.save();
+  //   const project = new Project(args);
+  //   await project.save();
+  //   return project;
+  const project = await ProjectFactory.create(args);
+  //   await project.save();
   return project;
 };
 
 exports.allProjects = async () => {
   //   TODO:: get projects that user has acess
-  const project = await Project.find();
+  const project = await ProjectFactory.getAllProjects();
   return project;
 };
 
 exports.findProject = async (args) => {
-  const project = await Project.findOne({ _id: args.id });
+  const project = await ProjectFactory.findProject(args.id);
   return project;
 };
 
 exports.updateProject = async (id, args) => {
-  let resProject = await Project.findOneAndUpdate(
-    { _id: id },
-    { $set: args },
-    { new: true, runValidators: true }
-  );
-  return resProject;
+  const project = await ProjectFactory.updateProject(id, args);
+  return project;
 };
 
 exports.deleteProject = async (id) => {
-  let resProject = await Project.findOneAndUpdate(
-    { _id: id },
-    {
-      $set: {
-        status: false,
-      },
-    },
-    { new: true, runValidators: true }
-  );
-  return resProject;
+  const project = await ProjectFactory.deleteProject(id);
+  return project;
 };
